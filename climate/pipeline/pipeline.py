@@ -2,7 +2,7 @@ import os,sys
 from climate.logger import logging
 from climate.exception import ClimateException
 from climate.config.configuration import Configuration
-from climate.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact,ModelPusherArtifact
+from climate.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact,ModelEvulationArtifact,ModelPusherArtifact,FinalArtifact
 from climate.components.data_ingestion import DataIngestion
 from climate.components.data_validation import DataValidation
 from climate.components.data_transform import DataTransform
@@ -79,6 +79,10 @@ class Pipeline:
             model_evulation_artifact = self.start_model_evulation(data_transform_artifact=data_transform_artifact,
                                                                   model_trainer_artifact=model_trainer_artifact)
             model_pusher_artifact = self.start_model_pusher(model_evulation_artifact=model_evulation_artifact)
+
+            final_artifact = FinalArtifact(cluster_model_path=data_transform_artifact.cluster_model_dir,
+                                           export_dir_path=model_pusher_artifact.export_dir_path,
+                                           ingested_train_data=data_ingestion_artifact.train_file_path)
             
         except Exception as e:
             raise ClimateException(sys,e) from e
