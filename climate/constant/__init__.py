@@ -20,6 +20,10 @@ NO_CLUSTER = 3
 
 DROP_COLUMN_LIST = ['DATE','WETBULBTEMPF','DewPointTempF','SeaLevelPressure','Precip']
 
+BEST_MODEL_KEY = "best_model"
+HISTORY_KEY = "history"
+MODEL_PATH_KEY = "model_path"
+
 #training pipeline related variables
 
 TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
@@ -66,5 +70,9 @@ MODEL_TRAINER_BASE_ACCURACY_KEY = "base_acuracy"
 MODEL_TRAINER_MODEL_CONFIG_DIR_KEY = "model_config_dir"
 MODEL_TRAINER_MODEL_CONFIG_FILE_NAME_KEY = "model_config_file_name"
 
+#model evulation related variables
 
+MODEL_EVULATION_CONFIG_KEY = "model_evulation_config"
+MODEL_EVULATION_DIR = "model_evulation"
+MODEL_EVULATION_FILE_NAME_KEY = "model_evulation_file_name"
 
