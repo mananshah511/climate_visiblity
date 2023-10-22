@@ -57,14 +57,12 @@ def get_evulate_regression_model(model_list:list, X_train:np.ndarray, y_train:np
             logging.info(f"model accuracy: {model_accuracy}")
             logging.info(f"difference in train test accuracy: {diff_test_train_accu}")
 
-            if model_accuracy>=base_accuracy and diff_test_train_accu < 0.15:
+            if model_accuracy>=base_accuracy and diff_test_train_accu < 0.40:
                 base_accuracy = model_accuracy
 
                 Metric_info_artifact = MetricInfoArtifact(
                         model_name=model_name,
                         model_object=model,
-                        train_rmse=train_rmse,
-                        test_rmse=test_rmse,
                         train_accuracy=train_accuracy,
                         test_accuracy=test_accuracy,
                         model_accuracy=model_accuracy,

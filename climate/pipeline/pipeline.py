@@ -2,10 +2,11 @@ import os,sys
 from climate.logger import logging
 from climate.exception import ClimateException
 from climate.config.configuration import Configuration
-from climate.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact
+from climate.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelTrainerArtifact
 from climate.components.data_ingestion import DataIngestion
 from climate.components.data_validation import DataValidation
 from climate.components.data_transform import DataTransform
+from climate.components.model_trainer import ModelTrainer
 
 class Pipeline:
 
@@ -40,11 +41,20 @@ class Pipeline:
         except Exception as e:
             raise ClimateException(sys,e) from e
         
+    def start_model_trainer(self,data_transform_artifact:DataTransformArtifact)->ModelTrainerArtifact:
+        try:
+            model_trainer = ModelTrainer(data_transform_artifact=data_transform_artifact,
+                                         model_trainer_config=self.config.get_model_trainer_config())
+            return model_trainer.intiate_model_trainer()
+        except Exception as e:
+            raise ClimateException(sys,e) from e
+        
     def run_pipeline(self):
         try:
             data_ingestion_artifact = self.start_data_ingestion()
             data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
             data_transform_artifact = self.start_data_transform(data_ingestion_artifact=data_ingestion_artifact,
                                                                 data_validation_artifact=data_validation_artifact)
+            model_trainer_artifact = self.start_model_trainer(data_transform_artifact=data_transform_artifact)
         except Exception as e:
             raise ClimateException(sys,e) from e

@@ -1,3 +1,10 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 5
+    verbose: 2
+
 model_selection:
   module_0:
     class: LinearRegression
@@ -73,3 +80,20 @@ model_selection:
       alpha:
       - 1
       - 2
+
+  module_5:
+    class: XGBRegressor
+    module: xgboost
+    params:
+      n_estimators: 50
+    search_param_grid:
+      n_estimators:
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 70
+      - 80
+      - 90
+      - 100  
