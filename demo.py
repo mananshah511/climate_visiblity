@@ -1,4 +1,8 @@
 from climate.config.configuration import Configuration
+from climate.pipeline.pipeline import Pipeline
 
-config = Configuration()
-config.get_data_ingestion_config()
+#config = Configuration()
+#config.get_data_ingestion_config()
+
+pipeline = Pipeline()
+pipeline.run_pipeline()
