@@ -16,7 +16,9 @@ NUMERIC_COULMN_KEY = "numerical_columns"
 CATEGORICAL_COLUMN_KEY = "categorical_columns"
 TARGET_COLUMN_KEY = "target_column"
 
-NO_CLUSTER = 4
+NO_CLUSTER = 3
+
+DROP_COLUMN_LIST = ['DATE','WETBULBTEMPF','DewPointTempF','SeaLevelPressure','Precip']
 
 #training pipeline related variables
 
@@ -54,3 +56,4 @@ DATA_TRANSFORM_PREPROCESSED_OBJECT_DIR_KEY = "preprocessed_object_dir"
 DATA_TRANSFORM_PREPROCESSED_OBJECT_FILE_NAME_KEY = "preprocessed_object_file_name"
 DATA_TRANSFORM_CLUSTER_MODEL_DIR_KEY = "cluster_model_dir"
 DATA_TRANSFORM_CLUSTER_MODEL_NAME_KEY = "cluster_model_name"
+
