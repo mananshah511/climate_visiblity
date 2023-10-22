@@ -1,4 +1,4 @@
-import os,sys
+import os,sys,json
 from climate.logger import logging
 from climate.exception import ClimateException
 from climate.config.configuration import Configuration
@@ -83,6 +83,9 @@ class Pipeline:
             final_artifact = FinalArtifact(cluster_model_path=data_transform_artifact.cluster_model_dir,
                                            export_dir_path=model_pusher_artifact.export_dir_path,
                                            ingested_train_data=data_ingestion_artifact.train_file_path)
+            
+            with open('data.json', 'w') as json_obj:
+                json.dump(final_artifact._asdict(), json_obj)
             
         except Exception as e:
             raise ClimateException(sys,e) from e
