@@ -1,0 +1,9 @@
+cluster0:
+  best_model:
+    model_path: D:\projects\climate_visiblity\climate\artifact\model_trainer\2023-10-22-18-39-04\cluster0\model.pkl
+cluster1:
+  best_model:
+    model_path: D:\projects\climate_visiblity\climate\artifact\model_trainer\2023-10-22-18-39-04\cluster1\model.pkl
+cluster2:
+  best_model:
+    model_path: D:\projects\climate_visiblity\climate\artifact\model_trainer\2023-10-22-18-39-04\cluster2\model.pkl
